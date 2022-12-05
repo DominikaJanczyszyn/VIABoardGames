@@ -1,0 +1,16 @@
+Agoston,Babicz,123456
+Ahmed,Omar,123456
+Alexandru,Ghemulet,123456
+Alin,Abdallh,123456
+Apurva,Mishra,123456
+Barbara,Abramczyk,123456
+Bence,Kabaly,123456
+Cristian,Josan,123456
+Dan,Turcan,123456
+Daniel,Hock,123456
+David,Besliu,123456
+Dominika,Janczyszyn,123456
+Dominika,Krullova,123456
+Emanoil,Duca,123456
+Federico,Medina,123456
+Filip,Witkiewicz,123456

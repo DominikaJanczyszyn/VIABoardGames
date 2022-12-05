@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManageStudentsController">
+   <children>
+      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="700.0" style="-fx-background-color: #9875a2;">
+         <menus>
+            <Menu mnemonicParsing="false" text="FILE">
+               <items>
+                  <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#handleAction" text="Exit" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuManage" mnemonicParsing="false" text="MANAGE">
+               <items>
+                  <MenuItem fx:id="menuBoardGames" mnemonicParsing="false" onAction="#handleAction" text="Manage Board Games" />
+                  <MenuItem fx:id="menuBorrowing" mnemonicParsing="false" onAction="#handleAction" text="Manage Borrowing" />
+                  <MenuItem fx:id="menuStudents" mnemonicParsing="false" onAction="#handleAction" text="Manage Students" />
+                  <MenuItem fx:id="menuEvents" mnemonicParsing="false" onAction="#handleAction" text="Manage Events" />
+                  <MenuItem fx:id="menuUpcomingGames" mnemonicParsing="false" onAction="#handleAction" text="Manage Upcoming Games" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <TabPane prefHeight="500.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="addTab" onSelectionChanged="#initialize" text="ADD">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="guestsList" layoutX="24.0" layoutY="84.0" onMouseClicked="#listChangeListener" prefHeight="295.0" prefWidth="300.0" />
+                        <TextField fx:id="searchAdd" layoutX="24.0" layoutY="51.0" onAction="#handleAction" onKeyTyped="#textChangeListener" prefHeight="25.0" prefWidth="300.0" promptText="SEARCH" />
+                        <Label layoutX="24.0" layoutY="22.0" text="Search for a guest :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="341.0" layoutY="54.0" text="OR">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="446.0" layoutY="54.0" text="Add a new member :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="firstnameAdd" layoutX="457.0" layoutY="89.0" prefHeight="25.0" prefWidth="180.0" promptText="First Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="lastnameAdd" layoutX="457.0" layoutY="127.0" prefHeight="25.0" prefWidth="180.0" promptText="Last Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="ViaIdAdd" layoutX="457.0" layoutY="165.0" prefHeight="25.0" prefWidth="180.0" promptText="VIA ID">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="381.0" layoutY="94.0" text="First Name:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="381.0" layoutY="132.0" text="Last Name:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="381.0" layoutY="170.0" text="VIA ID:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="changeStatus" layoutX="30.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleAction" prefHeight="40.0" prefWidth="280.0" text="CHANGE STATUS FROM GUEST TO MEMBER" />
+                        <Button fx:id="addMember" layoutX="341.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleAction" prefHeight="40.0" prefWidth="95.0" text="ADD MEMBER" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab fx:id="editTab" onSelectionChanged="#initialize" text="EDIT">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="studentsList" layoutX="24.0" layoutY="84.0" onMouseClicked="#listChangeListener" prefHeight="295.0" prefWidth="300.0" />
+                        <TextField fx:id="searchEdit" layoutX="24.0" layoutY="51.0" onKeyTyped="#textChangeListener" prefHeight="25.0" prefWidth="300.0" promptText="SEARCH" />
+                        <Label layoutX="24.0" layoutY="22.0" text="Search for a student :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="firstnameEdit" layoutX="457.0" layoutY="89.0" prefHeight="25.0" prefWidth="180.0" promptText="First Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="lastnameEdit" layoutX="457.0" layoutY="127.0" prefHeight="25.0" prefWidth="180.0" promptText="Last Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="ViaIdEdit" layoutX="457.0" layoutY="165.0" prefHeight="25.0" prefWidth="180.0" promptText="VIA ID">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="381.0" layoutY="94.0" text="First Name:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="381.0" layoutY="132.0" text="Last Name:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="381.0" layoutY="170.0" text="VIA ID:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="changeInformation" layoutX="30.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleAction" prefHeight="40.0" prefWidth="159.0" text="CHANGE INFORMATION" />
+                        <Label layoutX="446.0" layoutY="54.0" text="Change information :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab fx:id="removeTab" onSelectionChanged="#initialize" text="REMOVE">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="membersList" layoutX="361.0" layoutY="84.0" onMouseClicked="#listChangeListener" prefHeight="295.0" prefWidth="300.0" />
+                        <TextField fx:id="searchRemove" layoutX="361.0" layoutY="49.0" onKeyTyped="#textChangeListener" prefHeight="25.0" prefWidth="300.0" promptText="SEARCH" />
+                        <Label layoutX="446.0" layoutY="22.0" text="Search for a member :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="firstnameRemove" editable="false" layoutX="131.0" layoutY="89.0" prefHeight="25.0" prefWidth="180.0" promptText="First Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="lastnameRemove" editable="false" layoutX="131.0" layoutY="126.0" prefHeight="25.0" prefWidth="180.0" promptText="Last Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="ViaIdRemove" editable="false" layoutX="131.0" layoutY="163.0" prefHeight="25.0" prefWidth="180.0" promptText="VIA ID">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="45.0" layoutY="94.0" text="First Name:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="45.0" layoutY="131.0" text="Last Name:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="45.0" layoutY="168.0" text="VIA ID:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="removeButton" layoutX="30.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleAction" prefHeight="40.0" prefWidth="70.0" text="REMOVE" />
+                        <Label layoutX="100.0" layoutY="52.0" text="Student information:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</VBox>

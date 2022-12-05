@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<EventList>
+  <events>
+    <date>
+      <month>12</month>
+      <year>2022</year>
+      <day>23</day>
+    </date>
+    <name>Board Game Night</name>
+    <description>blablablablablabla</description>
+    <participants>
+      <students>
+        <firstName>Alin</firstName>
+        <lastName>Abdallh</lastName>
+        <isAMember>true</isAMember>
+        <VIAID>123456</VIAID>
+      </students>
+      <students>
+        <firstName>Ahmed</firstName>
+        <lastName>Omar</lastName>
+        <isAMember>true</isAMember>
+        <VIAID>123456</VIAID>
+      </students>
+      <students>
+        <firstName>Dominika</firstName>
+        <lastName>Janczyszyn</lastName>
+        <isAMember>true</isAMember>
+        <VIAID>123456</VIAID>
+      </students>
+      <students>
+        <firstName>Dominika</firstName>
+        <lastName>Krullova</lastName>
+        <isAMember>true</isAMember>
+        <VIAID>123456</VIAID>
+      </students>
+    </participants>
+  </events>
+</EventList>

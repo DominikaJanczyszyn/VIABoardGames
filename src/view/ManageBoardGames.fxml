@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManageBoardGameController">
+   <children>
+      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="700.0" style="-fx-background-color: #9875a2;">
+         <menus>
+            <Menu mnemonicParsing="false" text="FILE">
+               <items>
+                  <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#handleActions" text="Exit" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuManage" mnemonicParsing="false" text="MANAGE">
+               <items>
+                  <MenuItem fx:id="menuBoardGames" mnemonicParsing="false" onAction="#handleActions" text="Manage Board Games" />
+                  <MenuItem fx:id="menuBorrowing" mnemonicParsing="false" onAction="#handleActions" text="Manage Borrowing" />
+                  <MenuItem fx:id="menuStudents" mnemonicParsing="false" onAction="#handleActions" text="Manage Students" />
+                  <MenuItem fx:id="menuEvents" mnemonicParsing="false" onAction="#handleActions" text="Manage Events" />
+                  <MenuItem fx:id="menuUpcomingGames" mnemonicParsing="false" onAction="#handleActions" text="Manage Upcoming Games" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <TabPane prefHeight="506.0" prefWidth="703.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab onSelectionChanged="#initialize" text="ADD">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="15.0" layoutY="19.0" text="Title:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="15.0" layoutY="98.0" text="Description:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="titleAdd" layoutX="140.0" layoutY="16.0" prefHeight="25.0" prefWidth="220.0" promptText="Title" />
+                        <TextArea fx:id="descriptionAdd" layoutX="140.0" layoutY="97.0" prefHeight="270.0" prefWidth="220.0" promptText="Description" />
+                        <Button fx:id="addButton" layoutX="30.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleActions" prefHeight="40.0" prefWidth="70.0" text="ADD" />
+                        <Label layoutX="14.0" layoutY="57.0" prefHeight="24.0" prefWidth="120.0" text="Number of players:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="numberAdd" layoutX="140.0" layoutY="57.0" prefHeight="25.0" prefWidth="220.0" promptText="Number Of Players" />
+                        <Label layoutX="381.0" layoutY="19.0" text="Search for a owner:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="listViewAdd" layoutX="381.0" layoutY="97.0" prefHeight="100.0" prefWidth="300.0" />
+                        <TextField fx:id="ownerSearchAdd" layoutX="381.0" layoutY="56.0" onKeyTyped="#textChangeListener" prefHeight="25.0" prefWidth="300.0" promptText="SEARCH" />
+                        <Label layoutX="521.0" layoutY="205.0" text="OR">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="381.0" layoutY="228.0" text="Add a new guest:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="firstNameAdd" layoutX="476.0" layoutY="262.0" prefHeight="25.0" prefWidth="200.0" promptText="First name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="lastNameAdd" layoutX="476.0" layoutY="299.0" prefHeight="25.0" prefWidth="200.0" promptText="Last name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="VIAIDAdd" layoutX="476.0" layoutY="337.0" prefHeight="25.0" prefWidth="200.0" promptText="VIA ID">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="381.0" layoutY="267.0" text="First Name :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="381.0" layoutY="304.0" text="Last Name :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="381.0" layoutY="342.0" text="VIA ID :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab onSelectionChanged="#initialize" text="EDIT">
+               <content>
+                  <Pane prefHeight="130.0" prefWidth="464.0">
+                     <children>
+                        <Label layoutX="15.0" layoutY="19.0" text="Title:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="15.0" layoutY="98.0" text="Description:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="titleEdit" layoutX="140.0" layoutY="16.0" prefHeight="25.0" prefWidth="220.0" promptText="Title" />
+                        <TextArea fx:id="descriptionEdit" layoutX="140.0" layoutY="97.0" prefHeight="70.0" prefWidth="220.0" promptText="Description" />
+                        <Button fx:id="editButton" layoutX="30.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleActions" prefHeight="40.0" prefWidth="70.0" text="EDIT" />
+                        <ListView fx:id="listViewGameEdit" layoutX="381.0" layoutY="97.0" onMouseClicked="#listViewChangeListener" prefHeight="263.0" prefWidth="300.0" />
+                        <TextField fx:id="searchGameEdit" layoutX="381.0" layoutY="56.0" onKeyTyped="#textChangeListener" prefHeight="25.0" prefWidth="300.0" promptText="SEARCH" />
+                        <TextField fx:id="searchOwnerEdit" layoutX="141.0" layoutY="182.0" onKeyTyped="#textChangeListener" prefHeight="25.0" prefWidth="220.0" promptText="SEARCH" />
+                        <Label layoutX="14.0" layoutY="59.0" text="Number of players:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="183.0" prefHeight="24.0" prefWidth="48.0" text="Owner:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="numberEdit" layoutX="140.0" layoutY="57.0" prefHeight="25.0" prefWidth="220.0" promptText="Number Of Players" />
+                        <ListView fx:id="listViewOwnerEdit" layoutX="142.0" layoutY="215.0" onMouseClicked="#listViewChangeListener" prefHeight="145.0" prefWidth="220.0" />
+                        <Label layoutX="381.0" layoutY="19.0" text="Search for a game:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab onSelectionChanged="#initialize" text="REMOVE">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="removeButton" layoutX="30.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleActions" prefHeight="40.0" prefWidth="70.0" text="REMOVE" />
+                        <Label layoutX="15.0" layoutY="19.0" text="Title:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="59.0" text="Number of players:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="15.0" layoutY="98.0" text="Description:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="185.0" text="Owner:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="titleRemove" editable="false" layoutX="140.0" layoutY="16.0" prefHeight="25.0" prefWidth="220.0" promptText="Title" />
+                        <TextArea fx:id="descriptionRemove" editable="false" layoutX="140.0" layoutY="97.0" prefHeight="70.0" prefWidth="220.0" promptText="Description" />
+                        <TextField fx:id="ownerRemove" editable="false" layoutX="141.0" layoutY="182.0" prefHeight="25.0" prefWidth="220.0" promptText="Owner" />
+                        <TextField fx:id="numberRemove" editable="false" layoutX="140.0" layoutY="57.0" prefHeight="25.0" prefWidth="220.0" promptText="Number Of Players" />
+                        <ListView fx:id="listViewGameRemove" layoutX="381.0" layoutY="97.0" onMouseClicked="#listViewChangeListener" prefHeight="263.0" prefWidth="300.0" />
+                        <TextField fx:id="searchGameRemove" layoutX="381.0" layoutY="56.0" onKeyTyped="#textChangeListener" prefHeight="25.0" prefWidth="300.0" promptText="SEARCH" />
+                        <Label layoutX="381.0" layoutY="19.0" text="Search for a game:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab onSelectionChanged="#initialize" text="Information about Board Games">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tab" layoutX="22.0" layoutY="19.0" prefHeight="407.0" prefWidth="656.0">
+                          <columns>
+                            <TableColumn fx:id="titleTab" prefWidth="141.60004234313965" text="Title " />
+                            <TableColumn fx:id="numberTab" minWidth="0.79998779296875" prefWidth="111.2000732421875" text="Number of Players" />
+                              <TableColumn fx:id="descriptonTab" prefWidth="210.4000244140625" text="Description" />
+                              <TableColumn fx:id="ownerTab" prefWidth="191.19992065429688" text="Owner" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</VBox>
