@@ -106,7 +106,7 @@ public class ManageBoardGameController {
   }
 
   public void initialize() {
-    modelManager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "eventsWebsite.xml", "boardGamesWebsite.xml", "upcomingBoardGamesWebsite.xml");
+    modelManager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "website/eventsWebsite.xml", "website/boardGamesWebsite.xml", "website/upcomingBoardGamesWebsite.xml");
     studentList = modelManager.getAllStudent();
     boardGamesList = modelManager.getAllBoardGames();
     eventList = modelManager.getAllEvents();
