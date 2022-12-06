@@ -1,0 +1,214 @@
+/*written by everyone equally*/
+#main
+{
+    /*setting font family to Century Gothic*/
+    font-family: Century Gothic;
+}
+
+#header
+{
+    /*setting position to fixed because we want our header to be always displayed even when we scroll*/
+    position: fixed;
+     /*setting width and height*/
+    width: 80%;
+    height: 150px;
+    /*setting z-index to 1 because we want to have the header on top when we scroll down*/
+    z-index: 3;
+}
+
+#mainlogo
+{
+    /*setting width and height of logo and floating it to left side of the header*/
+    float: left;
+    width: 100px;
+    height: 100px;
+    /*setting position to relative and top to -5px, because logo was a little bit to high*/
+    position: relative;
+    top: -5px;
+}
+
+#title
+{
+    /*changing font family, size and colour of the title*/
+    font-family: Candara light;
+    font-size:50px;
+    color: black;
+    /*setting height*/
+    height:50px;
+    /*setting margins to have our title in the good place*/
+    margin-top: -30px;
+    margin-left: 20px;
+}
+
+.content {
+    /*adding border to separate each section*/
+    border-bottom: 5px solid #7e5c88;
+    /*adding padding top and bottom to make a gap between sections*/
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+img {
+    /*setting the width of all images to 100% to automatically resize them when you resize the browser*/
+    width: 100%;
+    /*setting height to auto to be always proportional to the width*/
+    height: auto;
+}
+
+h3 {
+    /*aligning text to the center in all h3 elements*/
+    text-align: center;
+}
+
+.footer {
+    /*adding background colour and padding to the footer*/
+    background-color: #c2c2c2;
+    padding: 10px 20px;
+}
+
+.copyrights {
+    /*adding background colour and padding to the copyrights*/
+    background-color: #626262;
+    padding: 0px 20px;
+}
+
+
+/*setting how page should look like on smaller devices*/
+@media screen and (max-width: 992px)
+{
+    .navbar {
+        /*setting background colour of the navigation bar*/
+        background-color: #999999;
+    }
+
+    #main {
+        /*setting width to 100% and height to auto to be always proportional to the width and margin to auto to have page in center of the browser*/
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+
+    #logo {
+        /*setting display to flex*/
+        display: flex;
+        /*setting position to absolute and floating left*/
+        position: absolute;
+        float: left;
+        /*aligning logo and title to the left*/
+        align-self: flex-start;
+        /*aligning title to the center*/
+        align-items: center;
+        /*setting margin to -0.7% to have text perfectly in the middle*/
+        margin-top: -0.7%;
+    }
+
+    #headercomputer {
+        /*hiding part of the header that should be displayed only on bigger devices*/
+        display: none;
+    }
+
+    .nav-link {
+        /*changing colour of links to black*/
+        color: black;
+    }
+
+    .picture {
+        /*adding bottom margin to the pictures to make add a gap between sections*/
+        margin-bottom: 10px;
+    }
+
+    .container {
+        /*setting position to relative and top to 60px to move everything down, because it was hidden behind header (because it has position fixed)*/
+        position: relative;
+        top: 60px;
+    }
+
+    .contact {
+        /*setting contacts width to 5% and height to auto*/
+        width: 5%;
+        height: auto;
+        /*adding margin top and bottom to make it look better*/
+        margin-bottom: 5px;
+        margin-right: 10px;
+    }
+
+    .viaphoto {
+        /*hiding the via photo on smaller devices*/
+        display: none;
+    }
+}
+
+/*setting how page should look like on bigger devices*/
+@media screen and (min-width: 992px)
+{
+    #main {
+        /*setting width to 80% and height to auto to be always proportional to the width and margin to auto to have page in center of the browser*/
+        width: 80%;
+        height: auto;
+        margin: auto;
+    }
+    .navbar {
+        /*setting background colour, width, margins*/
+        background-color: #999999;
+        width: 80%;
+        margin: auto;
+        /*moving 100px down to make if under logo and title*/
+        top: 100px;
+    }
+    #logo {
+        /*hiding logo on the navigation bar*/
+        display: none;
+    } 
+    #headercomputerflexbox {
+        /*setting display to flex and aligning items to center to have the title in the middle*/
+        display: flex;
+        align-items: center;
+        /*adding border on top*/
+        border-top: 5px solid #7e5c88;
+        /*setting background colour to white, because when we scrolled down other features were visible behind logo and the title*/
+        background-color: white;
+    }
+    .nav-link {
+        /*changing colour of navigation bar links to black and adding margins to center them*/
+        margin: -8px 0px -8px 0px;
+        color: black;
+    }
+    .nav-link:hover{
+        /*changing colour of navigation bar links when we hover on them and adding margins to center them*/
+        background-color: #c2c2c2;
+        margin: -8px 0px -8px 0px;
+    }
+    .active {
+        /*changing colour of the active button and adding margins to center it*/
+        background-color: #7e5c88;
+        margin: -8px 0px -8px 0px;
+    }
+    .active:hover{
+        /*changing colour of the active button when we hover on it and adding margins to center it*/
+        background-color: #9875a2;
+        margin: -8px 0px -8px 0px;
+    }
+    .navbar-collapse {
+        /*adding margin left to move all of the buttons to the left*/
+        margin-left: -28px;
+    }
+    .container {
+        /*setting position to relative and top to 150px to move everything down, because it was hidden behind header (because it has position fixed)*/
+        position: relative;
+        top: 150px;
+    }
+    .contact {
+        /*setting width, height and margins*/
+        width: 10%;
+        height: auto;
+        margin: 10px 10px;
+    }
+    .footer {
+        /*setting width to 80% to make footer has the same width as the rest of the page*/
+        width: 80%;
+    }
+    .copyrightscontainer {
+        /*setting width to 80% to make copyrights div has the same width as the rest of the page*/
+        width: 80%;
+    }
+}

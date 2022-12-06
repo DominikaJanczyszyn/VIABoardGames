@@ -1,0 +1,166 @@
+<!--written by Simona Draghici-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--setting keyboard type, title of the page-->
+    <meta charset="utf-8">
+    <title>VIA Board Games</title>
+    <!--setting the initial scale to display the page at 100% width of the browser-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--connecting html file with css files that contains styling of this page and bootstrap facilities-->
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="css/events.css" type="text/css" rel="stylesheet" />
+    <!--connecting html file with javascript file-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <!--creating div with class="main" that contains all of the things included on the page-->
+    <div id="main">
+        <!--creating div with id="header" that contains the header of the page with logo, name and navigation button-->
+        <div id="header">
+            <!--creating div with class="d-none d-lg-block" that hides this div on smaller screens-->
+            <div class="d-none d-lg-block">
+                <!--creating div with id="headercomputerflexbox" and class="d-none d-lg-block" that hides this div on smaller screens-->
+                <div id="headercomputerflexbox">
+                    <!--creating div logo and setting class="d-none d-lg-block" that hides this div on smaller screens-->
+                    <div class="d-none d-lg-block">
+                        <img id="mainlogo" src="images/logo.png" alt="Logo">
+                    </div>
+                    <!--creating div for the title and setting id="title" and class="d-none d-lg-block" that hides this div on smaller screens-->
+                    <div id="title" class="d-none d-lg-block">
+                        <p>VIA BOARD GAMES</p>
+                    </div>
+                </div>
+            </div>
+            <!--collapsible navigation bar with links to the other pages-->
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="https://en.via.dk/">
+                        <!--div for smaller logo-->
+                        <div id="logo">
+                            <img src="images/logo.png" alt="Avatar Logo" style="width:40px;">
+                            <a>VIA Board Games</a>
+                        </div>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapsibleNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link " href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="types.html">Generic Board Games Types</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="events.html">Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="catalogue.html">Board Games Catalogue</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="row content">
+                <div class="col">
+                    <h3><b>Events</b></h3>
+                </div>
+            </div>
+            <div id="events">
+                
+            </div>
+            <div class="row content bord">
+                <div class="col">
+                    <!-- creating a paragraph with a link to the DSR facebook page -->
+                    <p id="joinus"><b>Find out more info about our events on the <a
+                            href="https://www.facebook.com/eventshorsens"> DSR Events</a> facebook page!</b></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <!--creating div with class="container" (that allows us to use bootstrap facilities like rows and columns) and class="footer"-->
+    <div class="container footer">
+        <!--creating div with class row-->
+        <div class="row">
+            <!--creating div with width 2 after breaking the large point, before that point it will take 100% of the width of the page width; setting another class="viaphoto"-->
+            <div class="col-lg-2 viaphoto">
+                <!--adding via image-->
+                <img src="images/VIA.jpg" alt="VIA University College Horsens">
+            </div>
+            <!--creating div with width 3 after breaking the large point, before that point it will take 100% of the width of the page width-->
+            <div class="col-lg-3">
+                <!--some information inside the paragraphs-->
+                <p><b>VIA University College Address</b></p>
+                <p>Banegårdsgade 2, 8700 Horsens
+            </div>
+            <!--creating div with width 3 after breaking the large point, before that point it will take 100% of the width of the page width-->
+            <div class="col-lg-3">
+                <!--creating div with class row-->
+                <div class="row">
+                    <!--creating div with class col-->
+                    <div class="col">
+                        <!--some information and links inside the anchors-->
+                        <a href="https://en.via.dk/about-via"><img class="contact" src="images/globe.png"></a>
+                        <a>VIA Home Page</a>
+                    </div>
+                </div>
+                <!--creating div with class row-->
+                <div class="row">
+                    <!--creating div with class col-->
+                    <div class="col">
+                        <!--some information and links inside the anchors-->
+                        <a><img class="contact" src="images/phone.png"></a>
+                        <a>Phone number: 87 55 00 20</a>
+                    </div>
+                </div>
+            </div>
+            <!--creating div with width 3 after breaking the large point, before that point it will take 100% of the width of the page width-->
+            <div class="col-lg-3">
+                <!--creating div with class row-->
+                <div class="row">
+                    <!--creating div with class col-->
+                    <div class="col">
+                        <!--some information and links inside the anchors-->
+                        <a href="https://www.facebook.com/VIAUniversityCollegeInternational/"><img class="contact" src="images/facebook.png"></a>
+                        <a>VIA Facebook Page</a>
+                    </div>
+                </div>
+                <!--creating div with class row-->
+                <div class="row">
+                    <!--creating div with class col-->
+                    <div class="col">
+                        <!--some information and links inside the anchors-->
+                        <a href="https://www.instagram.com/accounts/login/?next=%2Fviauniversitycollege%2F"><img class="contact" src="images/instagram.png"></a>
+                        <a>VIA Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--creating div with class="container" (that allows us to use bootstrap facilities like rows and columns) and with class copyrightscontainer-->
+    <div class="container copyrightscontainer">
+        <!--creating div with class row and class copyrights-->
+        <div class="row copyrights">
+            <!--copyrights-->
+            <a>&copy; Copyrights. All rights reserved.</a>
+        </div>
+    </div>
+</body>
+
+</html>

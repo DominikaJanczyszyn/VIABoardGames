@@ -1,0 +1,29 @@
+/*written by Iulia Ispas*/
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #7e5c88;
+}
+
+@media screen and (max-width: 992px)
+{
+    .person
+    {   
+        /*adding some lines for delimitate the rows*/
+        border-bottom: 5px solid #7e5c88;
+    }
+}
+
+@media screen and (min-width: 992px)
+{
+    .person
+    {   
+        /*adding some lines for delimitate the rows*/
+        border-bottom: 5px solid #7e5c88;
+        padding: 10px;
+    }
+}

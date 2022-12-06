@@ -1,0 +1,36 @@
+/* written by Simona Draghici*/
+
+/*removing the border-bottom for some of the sections for appearance*/
+.bord
+{
+    border-bottom: none;
+}
+/*making the font size for events description bigger*/
+.text {
+    font-size: large;
+}
+
+h3{
+    text-align: center;
+}
+h4 {
+    /*aligning text to the center in all h4 elements*/
+    text-align: center;
+}
+#joinus
+{
+    /*alignin the text and setting the font size*/
+    text-align: center;
+    font-size: 150%;
+}
+a 
+{   /* changing the color of the text that links to the DSR facebook page */
+    color: #7e5c88;
+    text-decoration: none;
+}
+/* changing the color of the DSR facebook link when we hover it */
+a:hover
+{
+    color: #9875a2;
+}
+

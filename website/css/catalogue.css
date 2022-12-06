@@ -1,0 +1,72 @@
+/*written by Oliwier Wijas*/
+
+h3 {
+    padding: 15px 0px;
+}
+
+.gamesContainer {
+    border-top: solid #7e5c88 5px;
+    border-bottom: solid #7e5c88 5px;
+    padding: 10px 11px;
+}
+
+.headercol {
+    /*setting background colour of the headers*/
+    background-color: #9875a2;  
+    /*adding top and bottom paddings*/
+    padding: 10px 0px;
+    /*setting display to flex*/
+    display: flex;
+    /*aligning items in the center in all headers*/
+    align-items: center;
+    /*justifying content to center in all headers*/
+    justify-content: center;
+    /*adding borders*/
+    border: solid white 1px;
+    /*aligning text in the center, because it looked bad when it wrapped*/
+    text-align: center;
+}
+
+.oddrow {
+    /*setting background colour for odd rows*/
+    background-color:#c2c2c2;
+    /*adding top and bottom paddings*/
+    padding: 10px 0px;
+    /*setting display to flex*/
+    display: flex;
+    /*aligning items in the center in all headers*/
+    align-items: center;
+    /*justifying content to center in all headers*/
+    justify-content: center;
+    /*adding borders*/
+    border: solid white 1px;
+    /*aligning text in the center, because it looked bad when it wrapped*/
+    text-align: center;
+}
+.evenrow {
+    /*setting background colour for odd rows*/
+    background-color:#dcdbdb;
+    /*adding top and bottom paddings*/
+    padding: 10px 0px;
+    /*setting display to flex*/
+    display: flex;
+    /*aligning items in the center in all headers*/
+    align-items: center;
+    /*justifying content to center in all headers*/
+    justify-content: center;
+    /*adding borders*/
+    border: solid white 1px;
+    /*aligning text in the center, because it looked bad when it wrapped*/
+    text-align: center;
+}
+
+.upcomingGame {
+    background-color: #bc9fc4;
+    padding: 80px 10px;
+    margin: 0px 5px;
+}
+
+#upcomingGamesTitle {
+    position: relative;
+    top: 200px;
+}
