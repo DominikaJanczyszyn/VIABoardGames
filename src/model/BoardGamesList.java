@@ -55,8 +55,8 @@ public class BoardGamesList implements Serializable
     }
     return null;
   }
-  public BoardGame getBoardGameByIndex(int id){
-      return boardGames.get(id);
+  public BoardGame getBoardGameByIndex(int index){
+      return boardGames.get(index);
 
   }
   public boolean isABorrower(Student student)

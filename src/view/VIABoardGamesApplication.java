@@ -2,8 +2,8 @@ package view;
 
 import javafx.application.Application;
 
-public class TestMnageBoardGames {
+public class VIABoardGamesApplication {
     public static void main(String[] args) {
-        Application.launch(TestDominikaGUI.class);
+        Application.launch(TestGUI.class);
     }
 }

@@ -56,6 +56,6 @@ public class UpcomingBoardGame extends Game implements Serializable
    * @return String that contains information about the model.UpcomingBoardGame object
    */
   public String toString(){
-    return super.toString() + "\nnumber of votes: " + numberOfVotes;
+    return super.toString() + "\nNumber of votes: " + numberOfVotes;
   }
 }

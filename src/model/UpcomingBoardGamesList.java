@@ -40,9 +40,9 @@ public class UpcomingBoardGamesList implements Serializable
     }
   }
 
-  public UpcomingBoardGame getUpcomingBoardGameByIndex(int id){
+  public UpcomingBoardGame getUpcomingBoardGameByIndex(int index){
 
-    return upcomingBoardGames.get(id);
+    return upcomingBoardGames.get(index);
 
   }
 

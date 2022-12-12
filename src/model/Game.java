@@ -102,7 +102,7 @@ public abstract class Game implements Serializable
    */
   public String toString()
   {
-    return "\nName: " + name +
+    return "Name: " + name +
         "\nNumber of players: " + numberOfPlayers +
         "\nDescription: " + description;
   }

@@ -150,7 +150,6 @@ public class BoardGame extends Game implements Serializable
    */
   public void reserve(Student member) throws IsNotLentException, IsNotAMemberException
   {
-      System.out.println("weszlo");
       reservants.addMember(member);
   }
 
@@ -184,6 +183,7 @@ public class BoardGame extends Game implements Serializable
   {
     numberOfRatings++;
     ratings.add(rating);
+    getRating();
   }
 
   /**
@@ -198,7 +198,7 @@ public class BoardGame extends Game implements Serializable
       sum += ratings.get(i);
     }
     this.averageRating = sum / (double)ratings.size();
-    return sum / (double)ratings.size();
+    return averageRating;
 
   }
 

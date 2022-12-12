@@ -106,8 +106,8 @@ public class ManageBoardGameController {
   }
 
   public void initialize() {
-    modelManager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "website/eventsWebsite.xml", "website/boardGamesWebsite.xml", "website/upcomingBoardGamesWebsite.xml");
-    studentList = modelManager.getAllStudent();
+    modelManager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "website/xml/eventsWebsite.xml", "website/xml/boardGamesWebsite.xml", "website/xml/upcomingBoardGamesWebsite.xml");
+    studentList = modelManager.getAllStudents();
     boardGamesList = modelManager.getAllBoardGames();
     eventList = modelManager.getAllEvents();
     if (listViewAdd != null && listViewOwnerEdit != null) {
@@ -118,7 +118,7 @@ public class ManageBoardGameController {
     }
     if(tab != null){
       tab.getItems().clear();
-      EventList eventList = modelManager.getAllEvent();
+      EventList eventList = modelManager.getAllEvents();
       titleTab.setCellValueFactory(new PropertyValueFactory<>("name"));
       numberTab.setCellValueFactory(new PropertyValueFactory<>("numberOfPlayers"));
       descriptonTab.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -210,7 +210,7 @@ public class ManageBoardGameController {
             return;
           }
 
-          StudentList allStudents = modelManager.getAllStudent();
+          StudentList allStudents = modelManager.getAllStudents();
           for (int i = 0; i < allStudents.size(); i++) {
             if (allStudents.getStudentByIndex(i).equals(guest)) {
               Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -283,12 +283,11 @@ public class ManageBoardGameController {
     else if (e.getSource() == removeButton) {
       if (boardGame != null) {
         Student borrower = boardGame.getBorrower();
+        Student owner = boardGame.getOwner();
         Student[] students = boardGame.getAllReservants();
-
         boardGamesList.removeGame(boardGame);
-
-        if (boardGame.getOwner() != null && !boardGame.getOwner().isAMember() && !boardGamesList.isABorrower(boardGame.getOwner()) && !eventList.isAParticipant(boardGame.getOwner()) && !boardGamesList.isAnOwner(boardGame.getOwner())) {
-          studentList.removeGuest(boardGame.getOwner());
+        if (owner != null && !owner.isAMember() && !boardGamesList.isABorrower(owner) && !eventList.isAParticipant(owner) && !boardGamesList.isAnOwner(owner)) {
+          studentList.removeGuest(owner);
         }
         if (borrower != null && !borrower.isAMember() && !boardGamesList.isABorrower(borrower) && !boardGamesList.isAnOwner(borrower) && !eventList.isAParticipant(borrower)) {
           studentList.removeGuest(borrower);
@@ -327,7 +326,7 @@ public class ManageBoardGameController {
         public void changed(ObservableValue observable, Object oldValue, Object newValue) {
           listViewAdd.getItems().clear();
 
-          StudentList students = modelManager.containStudent(ownerSearchAdd.getText());
+          StudentList students = modelManager.containStudents(ownerSearchAdd.getText());
           for (int i = 0; i < students.size(); i++) {
             listViewAdd.getItems().add(students.getStudentByIndex(i));
           }
@@ -351,7 +350,7 @@ public class ManageBoardGameController {
         public void changed(ObservableValue observable, Object oldValue, Object newValue) {
           listViewOwnerEdit.getItems().clear();
 
-          StudentList students = modelManager.containStudent(searchOwnerEdit.getText());
+          StudentList students = modelManager.containStudents(searchOwnerEdit.getText());
           for (int i = 0; i < students.size(); i++) {
             listViewOwnerEdit.getItems().add(students.getStudentByIndex(i));
           }
@@ -411,7 +410,7 @@ public class ManageBoardGameController {
 
     private void updateStudentsList ()
     {
-      StudentList students = modelManager.getAllStudent();
+      StudentList students = modelManager.getAllStudents();
       listViewAdd.getItems().clear();
       listViewOwnerEdit.getItems().clear();
       for (int i = 0; i < students.size(); i++) {

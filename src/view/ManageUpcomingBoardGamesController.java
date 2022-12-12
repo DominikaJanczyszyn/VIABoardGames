@@ -18,7 +18,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import model.*;
 
-import java.awt.*;
 import java.util.Optional;
 
 public class ManageUpcomingBoardGamesController {
@@ -60,11 +59,11 @@ public class ManageUpcomingBoardGamesController {
         this.scene = scene;
         this.manager = modelManager;
     }
-    public void restart(){
+    public void reset(){
         viewHandler.loadUpcomingBoardGamesView();
     }
-    public void initialization(Event event) {
-        this.manager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "eventsWebsite.xml", "boardGamesWebsite.xml", "upcomingBoardGamesWebsite.xml");
+    public void initialization() {
+        this.manager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "website/xml/eventsWebsite.xml", "website/xml/boardGamesWebsite.xml", "website/xml/upcomingBoardGamesWebsite.xml");
         this.upcomingBoardGamesList = manager.getAllUpcomingGames();
         if(searchList != null){
             updateGamesView();
@@ -169,14 +168,22 @@ public class ManageUpcomingBoardGamesController {
             descriptionEdit.clear();
         }
         if(e.getSource() == vote){
-            upcomingBoardGame.voteForAGame();
-            manager.saveAllUpcomingGames(upcomingBoardGamesList);
-            updateGamesView();
-            updateWebsite();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setContentText("You voted for the game : " + upcomingBoardGame.getName());
-            alert.show();
+            if(upcomingBoardGame != null) {
+                upcomingBoardGame.voteForAGame();
+                manager.saveAllUpcomingGames(upcomingBoardGamesList);
+                updateGamesView();
+                updateWebsite();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("You voted for the game : " + upcomingBoardGame.getName());
+                alert.show();
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("No game has been selected.");
+                alert.show();
+            }
         }
         if(e.getSource()== remove){
             if (upcomingBoardGame != null) {
@@ -194,7 +201,7 @@ public class ManageUpcomingBoardGamesController {
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText(null);
-                alert.setContentText("Game is not selected.");
+                alert.setContentText("No game has been selected.");
                 alert.show();
             }
         }

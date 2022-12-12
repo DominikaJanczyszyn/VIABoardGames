@@ -70,12 +70,12 @@ public class ManageEventsController
   {
     return scene;
   }
-  public void restart(){
+  public void reset(){
     viewHandler.loadEventsView();
   }
   public void initialize()
   {
-    modelManager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "eventsWebsite.xml", "boardGamesWebsite.xml", "upcomingBoardGamesWebsite.xml");
+    modelManager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "website/xml/eventsWebsite.xml", "website/xml/boardGamesWebsite.xml", "website/xml/upcomingBoardGamesWebsite.xml");
     if (listViewTab2 != null && listViewTab3 != null && listViewEventsTab4 != null && listViewMembersTab4 != null)
     {
       updateEventList();
@@ -99,7 +99,7 @@ public class ManageEventsController
     }
     if(tab != null){
       tab.getItems().clear();
-      EventList eventList = modelManager.getAllEvent();
+      EventList eventList = modelManager.getAllEvents();
       nameTab.setCellValueFactory(new PropertyValueFactory<>("name"));
       dateTab.setCellValueFactory(new PropertyValueFactory<>("date"));
       descriptonTab.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -329,7 +329,7 @@ public class ManageEventsController
             return;
           }
 
-          StudentList allStudents = modelManager.getAllStudent();
+          StudentList allStudents = modelManager.getAllStudents();
 
           for (int i = 0; i < allStudents.size(); i++)
           {
@@ -457,7 +457,7 @@ public class ManageEventsController
   }
   private void updateStudentsList()
   {
-    StudentList students = modelManager.getAllStudent();
+    StudentList students = modelManager.getAllStudents();
     listViewMembersTab4.getItems().clear();
     for (int i = 0; i < students.size(); i++)
     {

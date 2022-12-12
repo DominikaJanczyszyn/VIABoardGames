@@ -53,6 +53,15 @@ public class StudentList implements Serializable
     }
     return null;
   }
+
+  public Student getMemberById(int index)
+  {
+    if (students.get(index).isAMember())
+    {
+      return students.get(index);
+    }
+    return null;
+  }
   public boolean sameID(Student member){
     boolean equals = false;
     for(int i = 0; i < students.size(); i++){

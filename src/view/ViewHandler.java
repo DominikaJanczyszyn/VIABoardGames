@@ -39,7 +39,6 @@ public class ViewHandler {
         {
             case "MainView":
                 stage.setScene(startController.getScene());
-                //reset
                 break;
             case "ManageBoardGames":
                 stage.setScene(manageBoardGameController.getScene());
@@ -51,15 +50,15 @@ public class ViewHandler {
                 break;
             case "ManageStudents":
                 stage.setScene(manageStudentsController.getScene());
-                manageStudentsController.restart();
+                manageStudentsController.reset();
                 break;
             case "ManageEvents":
                 stage.setScene(manageEventsController.getScene());
-                manageEventsController.restart();
+                manageEventsController.reset();
                 break;
             case "ManageUpcomingBoardGames":
                 stage.setScene(manageUpcomingBoardGamesController.getScene());
-                manageUpcomingBoardGamesController.restart();
+                manageUpcomingBoardGamesController.reset();
                 break;
         }
 

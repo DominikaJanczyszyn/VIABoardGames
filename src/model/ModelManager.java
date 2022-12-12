@@ -15,7 +15,7 @@ public class ModelManager
 {
   private String upcomingBoardGameFile;
   private String boardGamesFile;
-  private String studentFile;//chanage this in diagram
+  private String studentFile;
   private String eventFile;
   private String eventsWebsiteFile;
   private String boardGamesWebsiteFile;
@@ -132,7 +132,7 @@ public class ModelManager
    * Gets all model.Student objects from binary file and creates model.StudentList object
    * @return model.StudentList object
    */
-  public StudentList getAllStudent(){
+  public StudentList getAllStudents(){
     StudentList studentList = new StudentList();
 
     try
@@ -284,22 +284,6 @@ public EventList getAllEvents(){
     }
     return containGame;
   }
-  public StudentList containStudent (String text)
-  {
-    StudentList allStudents = new StudentList();
-    StudentList containStudent = new StudentList();
-
-    allStudents = getAllStudent();
-    for (int i = 0; i < allStudents.size(); i++)
-    {
-      String student = allStudents.getStudentByIndex(i).toString();
-      if (student.contains(text))
-      {
-        containStudent.addStudent(getAllStudent().getStudentByIndex(i));
-      }
-    }
-    return containStudent;
-  }
   public UpcomingBoardGamesList containUpcomingBoardGame (String text)
   {
     UpcomingBoardGamesList allBoardGames = new UpcomingBoardGamesList();
@@ -375,7 +359,7 @@ public EventList getAllEvents(){
   }
   public void removeStudent(Student student)
   {
-    StudentList allStudents = getAllStudent();
+    StudentList allStudents = getAllStudents();
 
     allStudents.removeGuest(student);
 
@@ -402,7 +386,7 @@ public EventList getAllEvents(){
   }
   public void addStudent(Student student)
   {
-    StudentList allStudents = getAllStudent();
+    StudentList allStudents = getAllStudents();
 
     allStudents.addGuest(student);
 
@@ -444,71 +428,55 @@ public EventList getAllEvents(){
 
     saveAllGames(allBoardGames);
   }
-  public EventList getAllEvent(){
-    EventList eventsList = new EventList();
-
-    try
-    {
-      eventsList = (EventList) MyFileHandler.readFromBinaryFile(eventFile);
-
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO Error reading file");
-    }
-    catch (ClassNotFoundException e)
-    {
-      System.out.println("Class Not Found");
-    }
-    return eventsList;
-  }
   public StudentList containGuest (String text)
   {
     StudentList allGuests = new StudentList();
     StudentList containGuest = new StudentList();
-    Student[] guests = getAllStudent().getAllGuests();
+    Student[] guests = getAllStudents().getAllGuests();
     for (int i = 0; i < guests.length; i++)
     {
-      allGuests.addGuest(guests[i]);
+      if (guests[i] != null) {
+        allGuests.addGuest(guests[i]);
+      }
     }
     for (int i = 0; i < allGuests.size(); i++)
     {
-      String guest = allGuests.getGuestById(i).toString();
-      if (guest.contains(text))
-      {
-        containGuest.addGuest(allGuests.getGuestById(i));
+      if (allGuests.getGuestById(i) != null) {
+        String guest = allGuests.getGuestById(i).toString();
+        if (guest.contains(text)) {
+          containGuest.addGuest(allGuests.getGuestById(i));
+        }
       }
     }
     return containGuest;
   }
   public void addMember(Student member)
   {
-    StudentList students = getAllStudent();
+    StudentList students = getAllStudents();
     students.addMember(member);
     saveAllStudents(students);
   }
   public StudentList containMember (String text)
   {
     StudentList allMembers = new StudentList();
-    StudentList containGuest = new StudentList();
-    Student[] guests = getAllStudent().getAllGuests();
-    for (int i = 0; i < guests.length; i++)
+    StudentList containMember = new StudentList();
+    Student[] members = getAllStudents().getAllGuests();
+    for (int i = 0; i < members.length; i++)
     {
-      allMembers.addGuest(guests[i]);
+      if (allMembers.getMemberById(i) != null) {
+        allMembers.addMember(members[i]);
+      }
     }
     for (int i = 0; i < allMembers.size(); i++)
     {
-      String guest = allMembers.getGuestById(i).toString();
-      if (guest.contains(text))
-      {
-        containGuest.addGuest(allMembers.getGuestById(i));
+      if (allMembers.getMemberById(i) != null) {
+        String member = allMembers.getMemberById(i).toString();
+        if (member.contains(text)) {
+          containMember.addMember(allMembers.getMemberById(i));
+        }
       }
     }
-    return containGuest;
+    return containMember;
   }
   public void saveAllBoardGamesXML(BoardGamesList boardGamesList)
   {

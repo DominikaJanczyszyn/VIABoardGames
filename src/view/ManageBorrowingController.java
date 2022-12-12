@@ -91,10 +91,10 @@ public class ManageBorrowingController{
         return scene;
     }
     public void tabChanger(Event event) {
-        this.manager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "eventsWebsite.xml", "boardGamesWebsite.xml", "upcomingBoardGamesWebsite.xml");
+        this.manager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "website/xml/eventsWebsite.xml", "website/xml/boardGamesWebsite.xml", "website/xml/upcomingBoardGamesWebsite.xml");
         this.boardGamesList = manager.getAllBoardGames();
-        this.studentList = manager.getAllStudent();
-        this.eventList = manager.getAllEvent();
+        this.studentList = manager.getAllStudents();
+        this.eventList = manager.getAllEvents();
         if(borrowTab.isSelected()){
             updateStudentArea(studentList, studentListView);
             updateNotLendGamesArea(boardGamesList, gameListView);
@@ -176,8 +176,8 @@ public class ManageBorrowingController{
             else if(boardGame!=null && nameTextField2.getText()!="" && lastNameTextField2.getText()!="" &&idTextField2.getText()!="") {
                 String name = nameTextField2.getText();
                 String lastName = lastNameTextField2.getText();
-                int Id = Integer.parseInt(idTextField2.getText());
                 try{
+                    int Id = Integer.parseInt(idTextField2.getText());
                     Student student1 = new Student(name, lastName, Id);
                     studentList.addStudent(student1);
                     String game = boardGame.getName();
@@ -299,9 +299,9 @@ public class ManageBorrowingController{
             alert.showAndWait();
             manager.saveAllGames(boardGamesList);
             manager.saveAllStudents(studentList);
+            updateWebsite(boardGamesList);
             boardGamesList = manager.getAllBoardGames();
             updateLentBoardGames(boardGamesList, gameListViewReturn);
-            updateWebsite(boardGamesList);
         }
         else if(e.getSource() == cancelButton){
             if(student != null && boardGame != null){

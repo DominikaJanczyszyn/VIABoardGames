@@ -12,7 +12,6 @@ import model.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 
-import javax.swing.*;
 import java.util.Optional;
 
 public class ManageStudentsController
@@ -69,27 +68,27 @@ public class ManageStudentsController
   {
     return scene;
   }
-  public void restart(){
+  public void reset(){
     viewHandler.loadStudentsView();
   }
-  public void initialize(Event event)
+  public void initialize()
   {
-    this.modelManager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "eventsWebsite.xml", "boardGamesWebsite.xml", "upcomingBoardGamesWebsite.xml");
-    students = modelManager.getAllStudent();
+    this.modelManager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "website/xml/eventsWebsite.xml", "website/xml/boardGamesWebsite.xml", "website/xml/upcomingBoardGamesWebsite.xml");
+    students = modelManager.getAllStudents();
     boardGamesList = modelManager.getAllBoardGames();
-    eventList = modelManager.getAllEvent();
-    if(addTab.isSelected()){
+    eventList = modelManager.getAllEvents();
+    if(guestsList != null){
       updateGuestsList();
     }
-    else if(editTab.isSelected()){
-      updateMembersList();
-    }
-    else if(removeTab.isSelected()){
+    else if(studentsList != null){
       updateStudentList();
+    }
+    else if(membersList != null){
+      updateMembersList();
     }
   }
 
-  public void updateGuestsList()
+  private void updateGuestsList()
   {
     guestsList.getItems().clear();
     for (int i = 0; i < students.size(); i++)
@@ -100,7 +99,7 @@ public class ManageStudentsController
     }
   }
 
-  public void updateStudentList()
+  private void updateStudentList()
   {
    studentsList.getItems().clear();
     for (int i = 0; i < students.size(); i++)
@@ -109,7 +108,7 @@ public class ManageStudentsController
     }
   }
 
-  public void updateMembersList()
+  private void updateMembersList()
   {
     membersList.getItems().clear();
     for (int i = 0; i < students.size(); i++)
@@ -132,7 +131,9 @@ public class ManageStudentsController
           StudentList guests = modelManager.containGuest(searchAdd.getText());
           for (int i = 0; i < guests.size(); i++)
           {
-            guestsList.getItems().add(guests.getGuestById(i));
+            if (guests.getGuestById(i) != null) {
+              guestsList.getItems().add(guests.getGuestById(i));
+            }
           }
         }
       });
@@ -144,7 +145,7 @@ public class ManageStudentsController
         public void changed(ObservableValue observableValue, Object oldValue, Object newValue)
         {
           studentsList.getItems().clear();
-          StudentList students = modelManager.containStudent(searchEdit.getText());
+          StudentList students = modelManager.containStudents(searchEdit.getText());
           for (int i = 0; i < students.size(); i++)
           {
             studentsList.getItems().add(students.getStudentByIndex(i));
@@ -198,24 +199,30 @@ public class ManageStudentsController
     }
     if (e.getSource() == changeStatus)
     {
+      System.out.println(guest);
       if (this.guest != null)
       {
         for (int i = 0; i < students.size(); i++)
         {
-          if (students.getStudentByIndex(i)!=null && students.getStudentByIndex(i).equals(guest) && (boardGamesList.isABorrower(guest) || boardGamesList.isAnOwner(guest)))
+          if (students.getStudentByIndex(i)!=null && students.getStudentByIndex(i).equals(guest))
           {
-              for(int j = 0; j < boardGamesList.size(); j++){
-                if(boardGamesList.getBoardGameByIndex(j).isLent() && boardGamesList.getBoardGameByIndex(j).getBorrower().equals(guest)){
-                  boardGamesList.getBoardGameByIndex(j).getBorrower().setAMember();
-                }
-                if(boardGamesList.getBoardGameByIndex(j).getOwner()!= null && boardGamesList.getBoardGameByIndex(j).getOwner().equals(guest)){
-                  boardGamesList.getBoardGameByIndex(j).getBorrower().setAMember();
-                }
+            if(boardGamesList.isABorrower(guest) || boardGamesList.isAnOwner(guest)){
+            for (int j = 0; j < boardGamesList.size(); j++) {
+              if (boardGamesList.getBoardGameByIndex(j).isLent() && boardGamesList.getBoardGameByIndex(j).getBorrower().equals(guest)) {
+                boardGamesList.getBoardGameByIndex(j).getBorrower().setAMember();
               }
+              if (boardGamesList.getBoardGameByIndex(j).getOwner() != null && boardGamesList.getBoardGameByIndex(j).getOwner().equals(guest)) {
+                boardGamesList.getBoardGameByIndex(j).getOwner().setAMember();
+              }
+            }
+          }
             students.getStudentByIndex(i).setAMember();
-
           }
         }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("You change guest : "+guest+" to member.");
+        alert.show();
         modelManager.saveAllGames(boardGamesList);
         modelManager.saveAllStudents(students);
         updateGuestsList();
