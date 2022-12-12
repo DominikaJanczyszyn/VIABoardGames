@@ -25,7 +25,7 @@
             <Menu fx:id="menuManage" mnemonicParsing="false" text="MANAGE">
                <items>
                   <MenuItem fx:id="menuBoardGames" mnemonicParsing="false" onAction="#handleAction" text="Manage Board Games" />
-                  <MenuItem fx:id="menuBorrowings" mnemonicParsing="false" onAction="#handleAction" text="Manage Borrowing" />
+                  <MenuItem fx:id="menuBorrowing" mnemonicParsing="false" onAction="#handleAction" text="Manage Borrowings" />
                   <MenuItem fx:id="menuStudents" mnemonicParsing="false" onAction="#handleAction" text="Manage Students" />
                   <MenuItem fx:id="menuEvents" mnemonicParsing="false" onAction="#handleAction" text="Manage Events" />
                   <MenuItem fx:id="menuUpcomingGames" mnemonicParsing="false" onAction="#handleAction" text="Manage Upcoming Games" />
