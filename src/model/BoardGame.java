@@ -5,6 +5,7 @@ import myexceptions.IsNotAMemberException;
 import myexceptions.IsNotLentException;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -197,7 +198,9 @@ public class BoardGame extends Game implements Serializable
     {
       sum += ratings.get(i);
     }
-    this.averageRating = sum / (double)ratings.size();
+    DecimalFormat f = new DecimalFormat("##.00");
+    double arvRating = sum / (double)ratings.size();
+    this.averageRating = Double.parseDouble(f.format(arvRating));
     return averageRating;
 
   }

@@ -160,30 +160,19 @@ public class ManageBoardGameController {
     }
     if (e.getSource() == addButton) {
       if (!titleAdd.getText().equals("") && !numberAdd.getText().equals("") && !descriptionAdd.getText().equals("")) {
+        System.out.println(student);
         String title = titleAdd.getText();
         String numberOfPlayers = numberAdd.getText();
         String description = descriptionAdd.getText();
-        BoardGame boardGame = new BoardGame(title, numberOfPlayers, description);
-
-        Student student = (Student) listViewAdd.getSelectionModel().getSelectedItem();
+        student = listViewAdd.getSelectionModel().getSelectedItem();
         if (student != null) {
+          BoardGame boardGame = new BoardGame(title, numberOfPlayers, description);
           boardGame.setOwner(student);
           modelManager.addBoardGame(boardGame);
-          updateStudentsList();
-          updateBoardGamesList();
-          updateWebsite();
-
           Alert alert = new Alert(Alert.AlertType.INFORMATION);
           alert.setHeaderText(null);
           alert.setContentText("The game was added to the system.");
           alert.show();
-
-          titleAdd.clear();
-          numberAdd.clear();
-          descriptionAdd.clear();
-          firstNameAdd.clear();
-          lastNameAdd.clear();
-          VIAIDAdd.clear();
         } else if (!firstNameAdd.getText().equals("") && !lastNameAdd.getText().equals("") && !VIAIDAdd.getText().equals("")) {
           String firstName = firstNameAdd.getText();
           String lastName = lastNameAdd.getText();
@@ -197,11 +186,10 @@ public class ManageBoardGameController {
             alert.show();
             return;
           }
-
           Student guest = null;
-
           try {
             guest = new Student(firstName, lastName, VIAID);
+
           } catch (IllegalArgumentException exception) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
@@ -209,42 +197,29 @@ public class ManageBoardGameController {
             alert.show();
             return;
           }
-
           StudentList allStudents = modelManager.getAllStudents();
-          for (int i = 0; i < allStudents.size(); i++) {
-            if (allStudents.getStudentByIndex(i).equals(guest)) {
+            if (allStudents.sameID(guest)){
               Alert alert = new Alert(Alert.AlertType.INFORMATION);
               alert.setHeaderText(null);
-              alert.setContentText("User is already in the system.");
+              alert.setContentText("Student is already in the system.");
               alert.show();
               return;
             }
-          }
-
-          boardGame.setOwner(guest);
-          modelManager.addBoardGame(boardGame);
-          modelManager.addStudent(guest);
-          updateStudentsList();
-          updateBoardGamesList();
-          updateWebsite();
-
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
-          alert.setHeaderText(null);
-          alert.setContentText("The game was added to the system.");
-          alert.show();
-
-          titleAdd.clear();
-          numberAdd.clear();
-          descriptionAdd.clear();
-          firstNameAdd.clear();
-          lastNameAdd.clear();
-          VIAIDAdd.clear();
-        } else {
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
-          alert.setHeaderText(null);
-          alert.setContentText("Student data is missing.");
-          alert.show();
+            else{
+              BoardGame boardGame = new BoardGame(title, numberOfPlayers, description);
+              boardGame.setOwner(guest);
+              modelManager.addStudent(guest);
+              modelManager.addBoardGame(boardGame);
+              Alert alert = new Alert(Alert.AlertType.INFORMATION);
+              alert.setHeaderText(null);
+              alert.setContentText("The game was added to the system.");
+              alert.show();
+            }
         }
+        updateStudentsList();
+        updateBoardGamesList();
+        updateWebsite();
+
       } else {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
@@ -311,6 +286,8 @@ public class ManageBoardGameController {
         numberRemove.clear();
         descriptionRemove.clear();
         ownerRemove.clear();
+        boardGame = null;
+        student = null;
       } else {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
@@ -372,6 +349,9 @@ public class ManageBoardGameController {
   }
 
   public void listViewChangeListener(MouseEvent mouseEvent) {
+    if(mouseEvent.getSource() == listViewAdd){
+      this.student = (Student) listViewAdd.getSelectionModel().getSelectedItem();
+    }
     if (mouseEvent.getSource() == listViewGameEdit) {
       this.boardGame = (BoardGame) listViewGameEdit.getSelectionModel().getSelectedItem();
       if (boardGame != null) {

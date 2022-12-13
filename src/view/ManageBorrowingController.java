@@ -138,7 +138,7 @@ public class ManageBorrowingController{
     private void updateNotLendGamesArea(BoardGamesList games, ListView listView){
         listView.getItems().clear();
         for(int i = 0; i < games.size(); i++){
-            if(!games.getBoardGameByIndex(i).isLent()){
+            if(games.getBoardGameByIndex(i) != null && !games.getBoardGameByIndex(i).isLent()){
                 listView.getItems().add(games.getBoardGameByIndex(i));
             }
         }
@@ -179,9 +179,13 @@ public class ManageBorrowingController{
                 try{
                     int Id = Integer.parseInt(idTextField2.getText());
                     Student student1 = new Student(name, lastName, Id);
+                    if(studentList.sameID(student1)){
+                        alert.setHeaderText(null);
+                        alert.setContentText("Student is already in the system!");
+                        return;
+                    }
                     studentList.addStudent(student1);
                     String game = boardGame.getName();
-                    alert.setHeaderText(null);
                     if(student1.isAMember() == false && !manager.getAllBoardGames().isABorrower(student1)){
                         boardGame.lentBoardGame(student1);
                         alert.setHeaderText("You lent:\n " + game);
@@ -194,8 +198,8 @@ public class ManageBorrowingController{
                     alert.setContentText("VIA ID has to contain 6 digits");
                 }
             }else{
-                alert.setHeaderText("ERROR!");
-                alert.setContentText("Please, fill in all fields");
+                alert.setHeaderText(null);
+                alert.setContentText("No data entered.");
             }
             boardGame = null;
             student = null;
@@ -234,8 +238,8 @@ public class ManageBorrowingController{
                 }
             }
             else{
-                alert.setHeaderText("ERROR!");
-                alert.setContentText("Please, fill in all fields");
+                alert.setHeaderText(null);
+                alert.setContentText("No data entered.");
             }
             boardGame = null;
             student = null;
@@ -262,7 +266,7 @@ public class ManageBorrowingController{
             }
 
             else{
-                alert.setHeaderText("ERROR!");
+                alert.setHeaderText(null);
                 alert.setContentText("You must choose student and a game!");
             }
             alert.showAndWait();
@@ -287,7 +291,7 @@ public class ManageBorrowingController{
                 if(radio5.isSelected()) boardGame.rate(5);
                 boardGame.returnBoardGame();
             }else{
-                alert.setHeaderText("ERROR!");
+                alert.setHeaderText(null);
                 alert.setContentText("You must choose a game!");
             }
             boardGame = null;
@@ -310,7 +314,7 @@ public class ManageBorrowingController{
                 alert.setHeaderText("The reservation has been canceled.");
             }
             else {
-                alert.setHeaderText("ERROR!");
+                alert.setHeaderText(null);
                 alert.setContentText("You must choose student and a game!");
             }
             boardGame = null;
