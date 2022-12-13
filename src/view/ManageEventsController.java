@@ -71,7 +71,9 @@ public class ManageEventsController
     return scene;
   }
   public void reset(){
-    viewHandler.loadEventsView();
+    updateEventList();
+    updateStudentsList();
+    updateWebsite();
   }
   public void initialize()
   {

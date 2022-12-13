@@ -84,7 +84,8 @@ public class ManageBorrowingController{
     }
     public void reset()
     {
-        viewHandler.loadBorrowingView();
+        updateStudentArea(studentList, studentListView);
+        updateNotLendGamesArea(boardGamesList, gameListView);
     }
     public Scene getScene()
     {
@@ -179,20 +180,21 @@ public class ManageBorrowingController{
                 try{
                     int Id = Integer.parseInt(idTextField2.getText());
                     Student student1 = new Student(name, lastName, Id);
-                    if(studentList.sameID(student1)){
+                    if(!studentList.sameID(student1)){
+                        studentList.addStudent(student1);
+                        String game = boardGame.getName();
+                        if(student1.isAMember() == false && !manager.getAllBoardGames().isABorrower(student1)){
+                            boardGame.lentBoardGame(student1);
+                            alert.setHeaderText("You lent:\n " + game);
+                            alert.setContentText("borrower:\n" + student1);
+                        }else{
+                            alert.setContentText("This student is not allowed to borrow game!\n Because this student borrowed one game already.");
+                        }
+                    }else{
                         alert.setHeaderText(null);
                         alert.setContentText("Student is already in the system!");
-                        return;
                     }
-                    studentList.addStudent(student1);
-                    String game = boardGame.getName();
-                    if(student1.isAMember() == false && !manager.getAllBoardGames().isABorrower(student1)){
-                        boardGame.lentBoardGame(student1);
-                        alert.setHeaderText("You lent:\n " + game);
-                        alert.setContentText("borrower:\n" + student1);
-                    }else{
-                        alert.setContentText("This student is not allowed to borrow game!\n Because this student borrowed one game already.");
-                    }
+
                 }catch (IllegalArgumentException ex){
                     alert.setHeaderText("ERROR!");
                     alert.setContentText("VIA ID has to contain 6 digits");
@@ -299,6 +301,12 @@ public class ManageBorrowingController{
             titleTextFieldReturn.clear();
             borrowerTextFieldReturn.clear();
             gameTextFieldReturn.clear();
+            radio1.setSelected(false);
+            radio2.setSelected(false);
+            radio3.setSelected(false);
+            radio4.setSelected(false);
+            radio5.setSelected(false);
+
             gameListViewReturn.getItems().clear();
             alert.showAndWait();
             manager.saveAllGames(boardGamesList);

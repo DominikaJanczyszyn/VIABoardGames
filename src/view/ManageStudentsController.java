@@ -51,9 +51,6 @@ public class ManageStudentsController
   @FXML private Button removeButton;
 
   private Student student, member, guest;
-  private StudentList students;
-  private BoardGamesList boardGamesList;
-  private EventList eventList;
   private ModelManager modelManager;
 
   private ViewHandler viewHandler;
@@ -69,14 +66,14 @@ public class ManageStudentsController
     return scene;
   }
   public void reset(){
-    viewHandler.loadStudentsView();
+    updateGuestsList();
+    updateStudentList();
+    updateMembersList();
   }
   public void initialize()
   {
+    System.out.println("hegrbggd");
     this.modelManager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "website/xml/eventsWebsite.xml", "website/xml/boardGamesWebsite.xml", "website/xml/upcomingBoardGamesWebsite.xml");
-    students = modelManager.getAllStudents();
-    boardGamesList = modelManager.getAllBoardGames();
-    eventList = modelManager.getAllEvents();
     if(guestsList != null){
       updateGuestsList();
     }
@@ -90,6 +87,7 @@ public class ManageStudentsController
 
   private void updateGuestsList()
   {
+    StudentList students = modelManager.getAllStudents();
     guestsList.getItems().clear();
     for (int i = 0; i < students.size(); i++)
     {
@@ -101,6 +99,7 @@ public class ManageStudentsController
 
   private void updateStudentList()
   {
+    StudentList students = modelManager.getAllStudents();
    studentsList.getItems().clear();
     for (int i = 0; i < students.size(); i++)
     {
@@ -110,6 +109,7 @@ public class ManageStudentsController
 
   private void updateMembersList()
   {
+    StudentList students = modelManager.getAllStudents();
     membersList.getItems().clear();
     for (int i = 0; i < students.size(); i++)
     {
@@ -199,9 +199,13 @@ public class ManageStudentsController
     }
     if (e.getSource() == changeStatus)
     {
+      Student guest = guestsList.getSelectionModel().getSelectedItem();
       System.out.println(guest);
+      StudentList students = modelManager.getAllStudents();
+      BoardGamesList boardGamesList = modelManager.getAllBoardGames();
       if (this.guest != null)
       {
+
         for (int i = 0; i < students.size(); i++)
         {
           if (students.getStudentByIndex(i)!=null && students.getStudentByIndex(i).equals(guest))
@@ -230,6 +234,7 @@ public class ManageStudentsController
     }
     else if (e.getSource() == addMember)
     {
+      StudentList students = modelManager.getAllStudents();
       if (!firstnameAdd.getText().equals("") && !lastnameAdd.getText().equals("") && !ViaIdAdd.getText().equals(""))
       {
         String firstName = firstnameAdd.getText();
@@ -295,6 +300,7 @@ public class ManageStudentsController
     }
     else if (e.getSource() == changeInformation)
     {
+      StudentList students = modelManager.getAllStudents();
       if (this.student != null)
       {
         if (!firstnameEdit.getText().equals("") && !lastnameEdit.getText().equals("") && !ViaIdEdit.getText().equals(""))
@@ -343,6 +349,9 @@ public class ManageStudentsController
     }
     else if (e.getSource() == removeButton)
     {
+      StudentList students = modelManager.getAllStudents();
+      BoardGamesList boardGamesList = modelManager.getAllBoardGames();
+      EventList eventList = modelManager.getAllEvents();
       if (member!=null && !boardGamesList.isABorrower(member) && !boardGamesList.isAnOwner(member) && !boardGamesList.isAReservant(member) && !eventList.isAParticipant(member))
       {
         try
@@ -385,7 +394,7 @@ public class ManageStudentsController
   {
     if(e.getSource() == guestsList){
       if(guestsList.getSelectionModel().getSelectedItem() != null){
-        this.guest = (Student) guestsList.getSelectionModel().getSelectedItem();
+        this.guest = guestsList.getSelectionModel().getSelectedItem();
       }
 
     }
