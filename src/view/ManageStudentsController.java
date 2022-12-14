@@ -285,7 +285,7 @@ public class ManageStudentsController
             alert.setContentText("Same id.");
             alert.show();
           }else{
-            modelManager.addMember(member);
+            students.addMember(member);
           }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
