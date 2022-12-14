@@ -228,6 +228,13 @@ public class ManageStudentsController
         modelManager.saveAllStudents(students);
         updateGuestsList();
       }
+      else
+      {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("You did not select any guest from the list. Try again.");
+        alert.show();
+      }
     }
     else if (e.getSource() == addMember)
     {
@@ -292,7 +299,8 @@ public class ManageStudentsController
         alert.setContentText("Error, make sure you entered the information.");
         alert.show();
       }
-
+      modelManager.saveAllStudents(students);
+      updateMembersList();
     }
     else if (e.getSource() == changeInformation)
     {
@@ -337,9 +345,12 @@ public class ManageStudentsController
           modelManager.saveAllStudents(students);
           updateStudentList();
         }
-      }
-      else {
-        // alert /////////////// no student selected
+        else {
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          alert.setHeaderText(null);
+          alert.setContentText("Error, make sure you entered the information.");
+          alert.show();
+        }
       }
     }
     else if (e.getSource() == removeButton)
