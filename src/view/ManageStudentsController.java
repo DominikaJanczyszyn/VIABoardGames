@@ -72,7 +72,6 @@ public class ManageStudentsController
   }
   public void initialize()
   {
-    System.out.println("hegrbggd");
     this.modelManager = new ModelManager("upcoming.bin", "games.bin", "students.bin", "events.bin", "website/xml/eventsWebsite.xml", "website/xml/boardGamesWebsite.xml", "website/xml/upcomingBoardGamesWebsite.xml");
     if(guestsList != null){
       updateGuestsList();
